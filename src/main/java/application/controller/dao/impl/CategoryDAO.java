@@ -11,7 +11,7 @@ import java.util.List;
 import application.controller.dao.ICategoryDAO;
 import application.model.Category;
 
-public class CategoryDAO implements ICategoryDAO {
+public class CategoryDAO extends AbstractDAO implements ICategoryDAO {
 
 	public Connection getConnection() {
 		try {
