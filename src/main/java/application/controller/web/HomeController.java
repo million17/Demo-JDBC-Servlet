@@ -10,8 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import application.controller.service.ICategoryService;
-import application.controller.service.INewService;
+import application.service.ICategoryService;
+import application.service.INewService;
 
 @WebServlet(urlPatterns = { "/home" })
 public class HomeController extends HttpServlet {
