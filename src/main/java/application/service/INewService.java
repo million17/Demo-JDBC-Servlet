@@ -8,4 +8,5 @@ public interface INewService {
 	List<New> findByCategoryId(Long categoryId);
 	
 	New save(New news);
+	New update(New updateNew);
 }

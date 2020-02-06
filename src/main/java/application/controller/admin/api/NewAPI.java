@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import application.controller.utils.HttpUtil;
 import application.model.New;
 import application.service.INewService;
@@ -17,24 +19,34 @@ import application.service.INewService;
 public class NewAPI extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
-	
+
 	@Inject
 	private INewService newSerive;
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		ObjectMapper mapper = new ObjectMapper();
 		req.setCharacterEncoding("UTF-8");
 		resp.setContentType("application/json");
 		New newModel = HttpUtil.of(req.getReader()).toModel(New.class);
-		System.out.println(newModel);
-		newModel = newSerive.save(newModel); 
+		newModel = newSerive.save(newModel);
+		mapper.writeValue(resp.getOutputStream(), newModel);
+		// tra nguoc la client
 		System.out.println(newModel);
 	}
 
 	@Override
 	protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		super.doPut(req, resp);
+		ObjectMapper mapper = new ObjectMapper();
+		req.setCharacterEncoding("UTF-8");
+		resp.setContentType("application/json");
+		New updateNew = HttpUtil.of(req.getReader()).toModel(New.class);
+		updateNew = newSerive.update(updateNew);
+		mapper.writeValue(resp.getOutputStream(), updateNew);
+	}
+
+	private void saveOrUpdate() {
+
 	}
 
 }

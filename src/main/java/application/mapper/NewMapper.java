@@ -13,6 +13,9 @@ public class NewMapper implements RowMapper<New> {
 		try {
 			news.setId(resultSet.getLong("id"));
 			news.setTitle(resultSet.getString("title"));
+			news.setContent(resultSet.getString("content"));
+			news.setCategoryId(resultSet.getLong("categoryid"));
+			news.setShortDesc(resultSet.getString("short_desc"));
 			return news;
 		} catch (SQLException e) {
 			

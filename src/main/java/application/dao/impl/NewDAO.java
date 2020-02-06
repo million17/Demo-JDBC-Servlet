@@ -28,4 +28,14 @@ public class NewDAO extends AbstractDAO<New> implements INewDAO {
 		return news.isEmpty() ? null : news.get(0);
 	}
 
+	@Override
+	public void update(New updateNew) {
+		StringBuilder sql = new StringBuilder("update news set title = ?, thumbnail = ?,");
+		sql.append(" shortdesc = ? , content = ? , categoryid = ?, ");
+		sql.append("created_date = ? , created_by = ? where id = ?");
+		update(sql.toString(), updateNew.getTitle(), updateNew.getShortDesc(), updateNew.getContent(), updateNew.getThumbnail(),
+				updateNew.getCategoryId(),updateNew.getCreatedDate(),updateNew.getCreatedBy(),updateNew.getId());
+
+	}
+
 }

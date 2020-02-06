@@ -3,8 +3,6 @@ package application.controller.utils;
 import java.io.BufferedReader;
 import java.io.IOException;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class HttpUtil {
@@ -19,12 +17,8 @@ public class HttpUtil {
 
 		try {
 			return new ObjectMapper().readValue(value, tClass);
-		} catch (JsonMappingException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (JsonProcessingException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
 		}
 
 		return null;
