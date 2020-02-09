@@ -30,14 +30,14 @@ public class NewDAO extends AbstractDAO<New> implements INewDAO {
 
 	@Override
 	public void update(New updateNew) {
-		StringBuilder sql = new StringBuilder("UPDATE news SET title = ?, thumbnail = ? ,");
-		sql.append("short_desc = ? , content = ? , categoryid = ? , ");
-		sql.append("created_date = ? , created_by = ?, modified_date = ?, modified_by = ? WHERE id = ?");
-		update(sql.toString(), updateNew.getTitle(), 
-				updateNew.getThumbnail(), updateNew.getShortDesc(),
-				updateNew.getContent(), updateNew.getCategoryId(), 
-				updateNew.getCreatedDate(), updateNew.getCreatedBy(),
-				updateNew.getModifiedDate(), updateNew.getModifiedBy());
+//		StringBuilder sql = new StringBuilder("UPDATE news SET title = ?, thumbnail = ? ,");
+//		sql.append("short_desc = ? , content = ? , categoryid = ? , ");
+//		sql.append("created_date = ? , created_by = ?, modified_date = ?, modified_by = ? WHERE id = ?");
+		String sql = "UPDATE news SET title = ? , thumbnail = ? , categoryid = ? , short_desc = ? , content = ? "
+				+ ", created_date = ? , modified_date = ? , created_by = ? , modified_by ? " + " WHERE id = ? ";
+		update(sql, updateNew.getTitle(), updateNew.getThumbnail(), updateNew.getCategoryId(),
+				updateNew.getShortDesc(), updateNew.getContent(), updateNew.getCreatedDate(),
+				updateNew.getModifiedDate(), updateNew.getCreatedBy(), updateNew.getModifiedBy());
 
 	}
 

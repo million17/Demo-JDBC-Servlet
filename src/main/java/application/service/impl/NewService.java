@@ -31,8 +31,8 @@ public class NewService implements INewService {
 		New oldNew = newDAO.findOne(updateNew.getId());
 		updateNew.setCreatedDate(oldNew.getCreatedDate());
 		updateNew.setCreatedBy(oldNew.getCreatedBy());
-//		updateNew.setModifiedBy(oldNew.getModifiedBy());
-//		updateNew.setModifiedDate(oldNew.getModifiedDate());
+		updateNew.setModifiedBy(oldNew.getModifiedBy());
+		updateNew.setModifiedDate(oldNew.getModifiedDate());
 		newDAO.update(updateNew);
 		return newDAO.findOne(updateNew.getId());
 	}
