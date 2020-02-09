@@ -16,15 +16,17 @@ public class NewMapper implements RowMapper<New> {
 			news.setContent(resultSet.getString("content"));
 			news.setCategoryId(resultSet.getLong("categoryid"));
 			news.setShortDesc(resultSet.getString("short_desc"));
+			news.setCreatedDate(resultSet.getTimestamp("created_date"));
+			news.setModifiedDate(resultSet.getTimestamp("modified_date"));
+			news.setCreatedBy(resultSet.getTimestamp("created_by"));
+			news.setModifiedBy(resultSet.getTimestamp("modified_by"));
 			return news;
 		} catch (SQLException e) {
-			
+
 			e.printStackTrace();
 			return null;
 		}
-		
-	
-		
+
 	}
 
 }

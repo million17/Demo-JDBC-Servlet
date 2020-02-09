@@ -30,11 +30,14 @@ public class NewDAO extends AbstractDAO<New> implements INewDAO {
 
 	@Override
 	public void update(New updateNew) {
-		StringBuilder sql = new StringBuilder("update news set title = ?, thumbnail = ?,");
-		sql.append(" shortdesc = ? , content = ? , categoryid = ?, ");
-		sql.append("created_date = ? , created_by = ? where id = ?");
-		update(sql.toString(), updateNew.getTitle(), updateNew.getShortDesc(), updateNew.getContent(), updateNew.getThumbnail(),
-				updateNew.getCategoryId(),updateNew.getCreatedDate(),updateNew.getCreatedBy(),updateNew.getId());
+		StringBuilder sql = new StringBuilder("UPDATE news SET title = ?, thumbnail = ? ,");
+		sql.append("short_desc = ? , content = ? , categoryid = ? , ");
+		sql.append("created_date = ? , created_by = ?, modified_date = ?, modified_by = ? WHERE id = ?");
+		update(sql.toString(), updateNew.getTitle(), 
+				updateNew.getThumbnail(), updateNew.getShortDesc(),
+				updateNew.getContent(), updateNew.getCategoryId(), 
+				updateNew.getCreatedDate(), updateNew.getCreatedBy(),
+				updateNew.getModifiedDate(), updateNew.getModifiedBy());
 
 	}
 
