@@ -45,8 +45,14 @@ public class NewAPI extends HttpServlet {
 		mapper.writeValue(resp.getOutputStream(), updateNew);
 	}
 
-	private void saveOrUpdate() {
-
+	@Override
+	protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		ObjectMapper mapper = new ObjectMapper();
+		req.setCharacterEncoding("UTF-8");
+		resp.setContentType("application/json");
+		New newModel = HttpUtil.of(req.getReader()).toModel(New.class);
+		newSerive.delete(newModel.getIds());
+		mapper.writeValue(resp.getOutputStream(), (""));
 	}
 
 }

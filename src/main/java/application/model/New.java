@@ -6,6 +6,7 @@ public class New extends AbstractModel {
 	private String shortDesc;
 	private String content;
 	private Long categoryId;
+	private long[] ids;
 
 	public String getTitle() {
 		return title;
@@ -46,5 +47,14 @@ public class New extends AbstractModel {
 	public void setCategoryId(Long categoryId) {
 		this.categoryId = categoryId;
 	}
+
+	public long[] getIds() {
+		return ids;
+	}
+
+	public void setIds(long[] ids) {
+		this.ids = ids;
+	}
+	
 
 }

@@ -28,6 +28,8 @@ public class NewDAO extends AbstractDAO<New> implements INewDAO {
 		return news.isEmpty() ? null : news.get(0);
 	}
 
+	
+	
 	@Override
 	public void update(New updateNew) {
 //		StringBuilder sql = new StringBuilder("UPDATE news SET title = ?, thumbnail = ? ,");
@@ -40,5 +42,13 @@ public class NewDAO extends AbstractDAO<New> implements INewDAO {
 				updateNew.getModifiedDate(), updateNew.getCreatedBy(), updateNew.getModifiedBy(), updateNew.getId());
 
 	}
+
+	@Override
+	public void delete(long id) {
+		String sql = "DELETE FROM news WHERE id = ? ";
+		update(sql,id);
+	}
+
+	
 
 }

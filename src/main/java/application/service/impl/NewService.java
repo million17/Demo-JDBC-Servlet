@@ -5,6 +5,7 @@ import java.util.List;
 import javax.inject.Inject;
 
 import application.dao.INewDAO;
+import application.dao.impl.NewDAO;
 import application.model.New;
 import application.service.INewService;
 
@@ -35,6 +36,14 @@ public class NewService implements INewService {
 		updateNew.setModifiedDate(oldNew.getModifiedDate());
 		newDAO.update(updateNew);
 		return newDAO.findOne(updateNew.getId());
+	}
+
+	@Override
+	public void delete(long[] ids) {
+		for(long id : ids) {
+			newDAO.delete(id);
+		}
+		
 	}
 
 }
