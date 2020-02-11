@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import application.controller.utils.HttpUtil;
+import application.utils.HttpUtil;
 import application.model.New;
 import application.service.INewService;
 

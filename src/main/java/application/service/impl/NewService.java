@@ -1,11 +1,11 @@
 package application.service.impl;
 
+import java.sql.Timestamp;
 import java.util.List;
 
 import javax.inject.Inject;
 
 import application.dao.INewDAO;
-import application.dao.impl.NewDAO;
 import application.model.New;
 import application.service.INewService;
 
@@ -22,6 +22,8 @@ public class NewService implements INewService {
 
 	@Override
 	public New save(New news) {
+		news.setCreatedDate(new Timestamp(System.currentTimeMillis()));
+		news.setCreatedBy("");
 		Long newId = newDAO.save(news);
 
 		return newDAO.findOne(newId);
@@ -32,18 +34,18 @@ public class NewService implements INewService {
 		New oldNew = newDAO.findOne(updateNew.getId());
 		updateNew.setCreatedDate(oldNew.getCreatedDate());
 		updateNew.setCreatedBy(oldNew.getCreatedBy());
-		updateNew.setModifiedBy(oldNew.getModifiedBy());
-		updateNew.setModifiedDate(oldNew.getModifiedDate());
+		updateNew.setModifiedDate(new Timestamp(System.currentTimeMillis()));
+		updateNew.setModifiedBy("");
 		newDAO.update(updateNew);
 		return newDAO.findOne(updateNew.getId());
 	}
 
 	@Override
 	public void delete(long[] ids) {
-		for(long id : ids) {
+		for (long id : ids) {
 			newDAO.delete(id);
 		}
-		
+
 	}
 
 }
