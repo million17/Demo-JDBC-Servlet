@@ -10,8 +10,8 @@
 					class="text-secondary text-small">Project Manager</span>
 			</div> <i class="mdi mdi-bookmark-check text-success nav-profile-badge"></i>
 	</a></li>
-	<li class="nav-item"><a class="nav-link" href="index.html"> <span
-			class="menu-title">Dashboard</span> <i class="mdi mdi-home menu-icon"></i>
+	<li class="nav-item"><a class="nav-link" href='<c:url value="/admin-new-list "/>' > <span
+			class="menu-title">List News</span> <i class="mdi mdi-home menu-icon"></i>
 	</a></li>
 	<li class="nav-item"><a class="nav-link" data-toggle="collapse"
 		href="#ui-basic" aria-expanded="false" aria-controls="ui-basic"> <span

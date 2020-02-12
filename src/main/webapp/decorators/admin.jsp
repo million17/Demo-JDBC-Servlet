@@ -6,6 +6,11 @@
 <head>
 <meta charset="UTF-8">
 <title><dec:title default="Home Admin" /></title>
+<!-- bootstrap -->
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css">
+	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<!-- end bootstrap -->
 <!-- plugins:css -->
 <link rel="stylesheet"
 	href="<c:url value= '/template/admin/vendors/iconfonts/mdi/css/materialdesignicons.min.css'/>">
@@ -58,5 +63,13 @@
 	<!-- Custom js for this page-->
 	<script src="<c:url value='/template/admin/js/dashboard.js' /> "></script>
 	<!-- End custom js for this page-->
+
+	<!-- js and jquery -->
+	
+	<script
+		src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js"></script>
+	<script src="<c:url value='/template/pagination/jquery.twbsPagination.js' /> " type="text/javascript"></script>
+	<!-- end js and jquery -->
+
 </body>
 </html>
