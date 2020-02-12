@@ -24,6 +24,8 @@ public class NewService implements INewService {
 	public New save(New news) {
 		news.setCreatedDate(new Timestamp(System.currentTimeMillis()));
 		news.setCreatedBy("");
+		news.setModifiedBy("");
+		news.setModifiedDate(new Timestamp(System.currentTimeMillis()));
 		Long newId = newDAO.save(news);
 
 		return newDAO.findOne(newId);

@@ -22,7 +22,7 @@ public class NewMapper implements RowMapper<New> {
 			news.setCreatedBy(resultSet.getString("created_by"));
 			news.setModifiedBy(resultSet.getString("modified_by"));
 			if (resultSet.getTimestamp("modified_date") != null) {
-				news.setCreatedDate(resultSet.getTimestamp("created_date"));
+				news.setCreatedDate(resultSet.getTimestamp("modified_date"));
 			}
 			if (resultSet.getTimestamp("modified_by") != null) {
 				news.setModifiedBy(resultSet.getString("modified_by"));

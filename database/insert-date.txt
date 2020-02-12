@@ -1,9 +1,0 @@
-insert into category(name,code) values ('Thể thao', 'the-thao');
-insert into category(name,code) values ('Thế giới', 'the-gioi');
-insert into category(name,code) value ('Thời sự', 'thoi-su');
-
-
-insert into news(title,categoryid) value ('Title 1', '1');
-insert into news(title,categoryid) value ('Title 2', '1');
-insert into news(title,categoryid) value ('Title 3', '2');
-insert into news(title,categoryid) value ('Title 4', '1');
