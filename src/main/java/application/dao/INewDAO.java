@@ -10,4 +10,6 @@ public interface INewDAO extends GenericDAO<New> {
 	Long save(New news);
 	void update(New updateNew);
 	void delete(long id);
+	List<New> findAll(Integer offset,Integer limit);
+	int getTotalItem();
 }

@@ -1,6 +1,6 @@
 package application.model;
 
-public class Comment extends AbstractModel {
+public class Comment extends AbstractModel<Comment> {
 	private String content;
 	private Long userId;
 	private Long newId;

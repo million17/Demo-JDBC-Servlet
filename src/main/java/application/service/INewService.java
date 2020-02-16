@@ -10,4 +10,6 @@ public interface INewService {
 	New save(New news);
 	New update(New updateNew);
 	void delete(long[] ids);
+	List<New> findAll(Integer offset,Integer limit);
+	int getTotalItem();
 }

@@ -2,7 +2,7 @@ package application.model;
 
 
 
-public class Role extends AbstractModel {
+public class Role extends AbstractModel<Role> {
     private String name;
     private String code;
 	public String getName() {

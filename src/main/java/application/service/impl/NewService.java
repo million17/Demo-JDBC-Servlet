@@ -50,4 +50,15 @@ public class NewService implements INewService {
 
 	}
 
+	@Override
+	public List<New> findAll(Integer offset,Integer limit) {
+		return newDAO.findAll(offset,limit);
+	}
+
+	@Override
+	public int getTotalItem() {
+
+		return newDAO.getTotalItem();
+	}
+
 }

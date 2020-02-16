@@ -1,6 +1,6 @@
 package application.model;
 
-public class User extends AbstractModel {
+public class User extends AbstractModel<User> {
 
 	private String userName;
 	private String fullName;

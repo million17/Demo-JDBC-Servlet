@@ -1,6 +1,6 @@
 package application.model;
 
-public class New extends AbstractModel {
+public class New extends AbstractModel<New> {
 	private String title;
 	private String thumbnail;
 	private String shortDesc;

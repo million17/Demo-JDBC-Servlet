@@ -4,6 +4,7 @@ import java.util.List;
 
 import application.dao.INewDAO;
 import application.mapper.NewMapper;
+import application.mapper.RowMapper;
 import application.model.New;
 
 public class NewDAO extends AbstractDAO<New> implements INewDAO {
@@ -16,7 +17,7 @@ public class NewDAO extends AbstractDAO<New> implements INewDAO {
 
 	@Override
 	public Long save(New news) {
-		String sql = "insert into news " + "(title , thumbnail , categoryid , "
+		String sql = "insert into news " + "(title , th" + "umbnail , categoryid , "
 				+ "short_desc , content , created_date , " + "modified_date , created_by , modified_by)"
 				+ " values (? , ?, ? ,? , ? , ? , ? , ? , ?)";
 
@@ -49,6 +50,18 @@ public class NewDAO extends AbstractDAO<New> implements INewDAO {
 	public void delete(long id) {
 		String sql = "DELETE FROM news WHERE id = ? ";
 		update(sql, id);
+	}
+
+	@Override
+	public List<New> findAll(Integer offset,Integer limit) {
+		String sql = "SELECT * FROM news LIMIT ?, ?";
+		return query(sql, new NewMapper(),offset,limit);
+	}
+
+	@Override
+	public int getTotalItem() {
+		String sql = "SELECT count(*) from news ";
+		return count(sql);
 	}
 
 }
