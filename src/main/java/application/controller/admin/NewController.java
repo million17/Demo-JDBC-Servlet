@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet(urlPatterns = { "/admin-new-list" })
+@WebServlet(urlPatterns = { "/admin-new" })
 public class NewController extends HttpServlet {
 	/**
 	 * 
