@@ -7,6 +7,7 @@ import javax.inject.Inject;
 
 import application.dao.INewDAO;
 import application.model.New;
+import application.paging.Pageble;
 import application.service.INewService;
 
 public class NewService implements INewService {
@@ -51,8 +52,8 @@ public class NewService implements INewService {
 	}
 
 	@Override
-	public List<New> findAll(Integer offset,Integer limit) {
-		return newDAO.findAll(offset,limit);
+	public List<New> findAll(Pageble pageble) {
+		return newDAO.findAll(pageble);
 	}
 
 	@Override

@@ -6,6 +6,7 @@ import application.dao.INewDAO;
 import application.mapper.NewMapper;
 import application.mapper.RowMapper;
 import application.model.New;
+import application.paging.Pageble;
 
 public class NewDAO extends AbstractDAO<New> implements INewDAO {
 
@@ -53,9 +54,17 @@ public class NewDAO extends AbstractDAO<New> implements INewDAO {
 	}
 
 	@Override
-	public List<New> findAll(Integer offset,Integer limit) {
-		String sql = "SELECT * FROM news LIMIT ?, ?";
-		return query(sql, new NewMapper(),offset,limit);
+	public List<New> findAll(Pageble pageble) {
+//		String sql = "SELECT * FROM news";
+		StringBuilder sql = new StringBuilder("SELECT * FROM news ");
+		if (pageble.getSorter() != null) {
+			sql.append(" ORDER BY " + pageble.getSorter().getSortName() + " " + pageble.getSorter().getSortBy());
+		}
+		if (pageble.getOffset() != null && pageble.getLimit() != null) {
+			sql.append(" LIMIT " + pageble.getOffset() + " , " + pageble.getLimit());
+		}
+		return query(sql.toString(), new NewMapper());
+
 	}
 
 	@Override
