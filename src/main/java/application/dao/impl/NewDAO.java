@@ -4,7 +4,6 @@ import java.util.List;
 
 import application.dao.INewDAO;
 import application.mapper.NewMapper;
-import application.mapper.RowMapper;
 import application.model.New;
 import application.paging.Pageble;
 
@@ -18,7 +17,7 @@ public class NewDAO extends AbstractDAO<New> implements INewDAO {
 
 	@Override
 	public Long save(New news) {
-		String sql = "insert into news " + "(title , th" + "umbnail , categoryid , "
+		String sql = "insert into news " + "(title , thumbnail , categoryid , "
 				+ "short_desc , content , created_date , " + "modified_date , created_by , modified_by)"
 				+ " values (? , ?, ? ,? , ? , ? , ? , ? , ?)";
 
