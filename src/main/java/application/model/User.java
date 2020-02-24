@@ -7,6 +7,7 @@ public class User extends AbstractModel<User> {
 	private String password;
 	private int status;
 	private Long roleId;
+	private Role role;
 
 	public String getUserName() {
 		return userName;
@@ -47,5 +48,15 @@ public class User extends AbstractModel<User> {
 	public void setRoleId(Long roleId) {
 		this.roleId = roleId;
 	}
+
+	public Role getRole() {
+		return role;
+	}
+
+	public void setRole(Role role) {
+		this.role = role;
+	}
+	
+	
 
 }
