@@ -15,8 +15,9 @@ import application.service.ICategoryService;
 import application.service.INewService;
 import application.service.IUserService;
 import application.utils.FormUtil;
+import application.utils.SessionUtil;
 
-@WebServlet(urlPatterns = { "/home", "/login" })
+@WebServlet(urlPatterns = { "/home", "/login", "/logout" })
 public class HomeController extends HttpServlet {
 
 	/**
@@ -37,10 +38,11 @@ public class HomeController extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String action = req.getParameter("action");
 		if (action != null && action.equals("login")) {
-			RequestDispatcher dispatcher = req.getRequestDispatcher("/views/login.jsp");
+			RequestDispatcher dispatcher = req.getRequestDispatcher("/views/login/login.jsp");
 			dispatcher.forward(req, resp);
 		} else if (action != null && action.equals("logout")) {
-
+			SessionUtil.getInstance().removeValue(req, "USERMODEL");
+			resp.sendRedirect(req.getContextPath() + "/home");
 		} else {
 			req.setAttribute("categories", categoryService.findAll());
 			RequestDispatcher dispatcher = req.getRequestDispatcher("/views/web/home.jsp");
@@ -56,11 +58,13 @@ public class HomeController extends HttpServlet {
 			User user = FormUtil.toModel(User.class, req);
 			user = userService.findByUserNameAndPasswordAndStatus(user.getUserName(), user.getPassword(), 1);
 			if (user != null) {
+				SessionUtil.getInstance().putValue(req, "USERMODEL", user);
 				if (user.getRole().getCode().equals("USER")) {
 					resp.sendRedirect(req.getContextPath() + "/home");
 				} else if (user.getRole().getCode().equals("ADMIN")) {
 					resp.sendRedirect(req.getContextPath() + "/admin");
 				}
+
 			} else {
 				resp.sendRedirect(req.getContextPath() + "/login?action=login");
 			}
