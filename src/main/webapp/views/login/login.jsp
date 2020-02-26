@@ -6,12 +6,14 @@
 <head>
 <meta charset="UTF-8">
 <title>Login</title>
-<style>
-</style>
 </head>
 <body>
 	<div class="d-flex justify-content-center h-100">
 		<div class="card">
+			<c:if test="${not empty message}">
+				<div class="alert alert-${alert} my-3 mx-3" role="alert">
+					${message}</div>
+			</c:if>
 			<div class="card-body">
 				<form method="post" action="<c:url value='/login?action=login' /> "
 					id="formLogin">
@@ -34,7 +36,7 @@
 						<input type="submit" value="Login"
 							class="btn float-right login_btn">
 					</div>
-					<input type="hidden" name="action" id="action" value="login"/>
+					<input type="hidden" name="action" id="action" value="login" />
 				</form>
 			</div>
 		</div>

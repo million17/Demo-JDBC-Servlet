@@ -13,11 +13,12 @@ html, body {
 }
 
 .card {
-	height: 370px;
+	min-height: 190px;
 	margin-top: auto;
 	margin-bottom: auto;
 	width: 400px;
 	background-color: rgba(0, 0, 0, 0.5) !important;
+	box-shadow: 3px 2px 3px #000;
 }
 
 .social_icon span {

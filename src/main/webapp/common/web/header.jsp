@@ -11,14 +11,15 @@
 		</button>
 		<div class="collapse navbar-collapse" id="navbarResponsive">
 			<ul class="navbar-nav ml-auto">
-				<c:if test="${ not empty USERMODEL }">
-					<li><a href='<c:url value="/logout?action=logout" />' /></li>
+				<c:if test="${empty USERMODEL}">
+				    <li class="nav-item">
+				    	<a class="nav-link" href='<c:url value="/login?action=login" /> '> Login </a>
+				    </li>
 				</c:if>
-				<c:if test="${ empty USERMODEL } ">
-				<li class="nav-item"><a class="nav-link"
-						href="<c:url value='/login?action=login' />
-				">Login</a>
-				</li>
+				<c:if test="${not empty USERMODEL}">
+				    <li class="nav-item">
+						<a class="nav-link" href="<c:url value='/logout?action=logout' /> "> Logout</a>
+					</li>
 				</c:if>
 			</ul>
 		</div>
