@@ -3,7 +3,6 @@ package application.mapper;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import application.model.New;
 import application.model.Role;
 import application.model.User;
 
@@ -18,14 +17,19 @@ public class UserMapper implements RowMapper<User> {
 			users.setFullName(resultSet.getString("fullname"));
 			users.setStatus(resultSet.getInt("status"));
 			users.setRoleId(resultSet.getLong("roleid"));
-			Role role = new Role();
-			role.setName(resultSet.getString("name"));
-			role.setCode(resultSet.getString("code"));
-			users.setRole(role);
 			users.setCreatedDate(resultSet.getTimestamp("created_date"));
 			users.setModifiedDate(resultSet.getTimestamp("modified_date"));
 			users.setCreatedBy(resultSet.getString("created_by"));
 			users.setModifiedBy(resultSet.getString("modified_by"));
+			try {
+				Role role = new Role();
+				role.setName(resultSet.getString("name"));
+				role.setCode(resultSet.getString("code"));
+				users.setRole(role);
+			} catch (Exception e) {
+				System.out.println(e.getMessage());
+			}
+
 			if (resultSet.getTimestamp("modified_date") != null) {
 				users.setCreatedDate(resultSet.getTimestamp("modified_date"));
 			}

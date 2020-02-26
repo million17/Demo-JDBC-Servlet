@@ -9,15 +9,22 @@ import java.sql.Statement;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.ResourceBundle;
 
 import application.dao.GenericDAO;
 import application.mapper.RowMapper;
 
 public class AbstractDAO<T> implements GenericDAO<T> {
+
+	ResourceBundle bundle = ResourceBundle.getBundle("application");
+
 	public Connection getConnection() {
 		try {
-			Class.forName("com.mysql.jdbc.Driver");
-			return DriverManager.getConnection("jdbc:mysql://localhost:3306/newjdbc1month2020", "root", "bemyself");
+			Class.forName(bundle.getString("driveName"));
+			String url = bundle.getString("url");
+			String user = bundle.getString("user");
+			String password = bundle.getString("password");
+			return DriverManager.getConnection(url, user, password);
 		} catch (ClassNotFoundException | SQLException e) {
 			System.out.println("Error Connect MySql!");
 			return null;
@@ -74,7 +81,7 @@ public class AbstractDAO<T> implements GenericDAO<T> {
 					statement.setInt(index, (Integer) parameter);
 				} else if (parameter instanceof Timestamp) {
 					statement.setTimestamp(index, (Timestamp) parameter);
-				} 
+				}
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();

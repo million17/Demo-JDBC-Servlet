@@ -4,7 +4,7 @@
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
 	id="WebApp_ID" version="3.0">
 	<display-name>jdbc-1-month-2020</display-name>
-	
+
 	<listener>
 		<listener-class>org.jboss.weld.environment.servlet.Listener</listener-class>
 	</listener>
@@ -15,6 +15,15 @@
 	</filter>
 	<filter-mapping>
 		<filter-name>sitemesh</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
+	<filter>
+		<filter-name>servletFilter</filter-name>
+		<filter-class>application.filter.AuthorizationFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>servletFilter</filter-name>
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
 
