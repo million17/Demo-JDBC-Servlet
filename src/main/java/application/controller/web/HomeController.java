@@ -35,7 +35,6 @@ public class HomeController extends HttpServlet {
 	@Inject
 	private IUserService userService;
 
-	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		ResourceBundle bundle = ResourceBundle.getBundle("application");
