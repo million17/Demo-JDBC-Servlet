@@ -15,7 +15,7 @@
 					${message}</div>
 			</c:if>
 			<div class="card-body">
-				<form method="post" action="<c:url value='/login?action=login' /> "
+				<form method="post" action="<c:url value='/login' /> "
 					id="formLogin">
 					<div class="input-group form-group">
 						<div class="input-group-prepend">
@@ -32,12 +32,13 @@
 						<input type="password" class="form-control" placeholder="password"
 							name="password" id="password">
 					</div>
+					<input type="hidden" name="action" value="login" />
 					<div class="form-group">
-						<input type="submit" value="Login"
-							class="btn float-right login_btn">
+						<button type="submit" class="btn float-right login_btn">Login
+						</button>
 					</div>
-					<input type="hidden" name="action" id="action" value="login" />
 				</form>
 			</div>
 		</div>
+	</div>
 </body>

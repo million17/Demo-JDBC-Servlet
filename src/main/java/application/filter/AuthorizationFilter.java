@@ -2,13 +2,7 @@ package application.filter;
 
 import java.io.IOException;
 
-import javax.servlet.Filter;
-import javax.servlet.FilterChain;
-import javax.servlet.FilterConfig;
-import javax.servlet.ServletContext;
-import javax.servlet.ServletException;
-import javax.servlet.ServletRequest;
-import javax.servlet.ServletResponse;
+import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -32,8 +26,9 @@ public class AuthorizationFilter implements Filter {
 		HttpServletRequest req = (HttpServletRequest) request;
 		HttpServletResponse resp = (HttpServletResponse) response;
 		String url = req.getRequestURI();
-		if (url.startsWith("/jdbc-1-month-2020/admin")) {
-			User model = (User) SessionUtil.getInstance().getValue(req, "USERMODEL");
+		if (url.startsWith(req.getContextPath() + "/admin")) {
+			User model = new User();
+			model = (User) SessionUtil.getInstance().getValue(req, "USERMODEL");
 			if (model != null) {
 				if (model.getRole().getCode().equals(SystemConstant.ADMIN)) {
 					filterChain.doFilter(request, response);
