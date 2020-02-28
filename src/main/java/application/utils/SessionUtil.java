@@ -19,7 +19,7 @@ public class SessionUtil {
 	}
 
 	public Object getValue(HttpServletRequest req, String key) {
-		return req.getAttribute(key);
+		return req.getSession().getAttribute(key);
 	}
 
 	public void removeValue(HttpServletRequest req, String key) {
