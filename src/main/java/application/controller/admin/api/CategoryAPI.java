@@ -12,19 +12,21 @@ import javax.servlet.http.HttpServletResponse;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import application.model.Category;
+import application.model.User;
 import application.service.ICategoryService;
 import application.utils.HttpUtil;
+import application.utils.SessionUtil;
 
-@WebServlet(urlPatterns = {"/api-admin-category"})
+@WebServlet(urlPatterns = { "/api-admin-category" })
 public class CategoryAPI extends HttpServlet {
-	
+
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 	@Inject
 	private ICategoryService categoryService;
-	
+
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		ObjectMapper objectMapper = new ObjectMapper();
@@ -35,7 +37,7 @@ public class CategoryAPI extends HttpServlet {
 		objectMapper.writeValue(resp.getOutputStream(), category);
 		System.out.println("Success");
 	}
-	
+
 	@Override
 	protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		ObjectMapper objectMapper = new ObjectMapper();

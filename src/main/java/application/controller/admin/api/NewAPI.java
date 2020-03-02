@@ -12,7 +12,9 @@ import javax.servlet.http.HttpServletResponse;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import application.utils.HttpUtil;
+import application.utils.SessionUtil;
 import application.model.New;
+import application.model.User;
 import application.service.INewService;
 
 @WebServlet(urlPatterns = { "/api-admin-new" })
@@ -29,6 +31,7 @@ public class NewAPI extends HttpServlet {
 		req.setCharacterEncoding("UTF-8");
 		resp.setContentType("application/json");
 		New newModel = HttpUtil.of(req.getReader()).toModel(New.class);
+		newModel.setCreatedBy(((User) SessionUtil.getInstance().getValue(req, "USERMODEL")).getUserName());
 		newModel = newSerive.save(newModel);
 		mapper.writeValue(resp.getOutputStream(), newModel);
 		// tra nguoc la client
@@ -41,6 +44,7 @@ public class NewAPI extends HttpServlet {
 		req.setCharacterEncoding("UTF-8");
 		resp.setContentType("application/json");
 		New updateNew = HttpUtil.of(req.getReader()).toModel(New.class);
+		updateNew.setModifiedBy(((User) SessionUtil.getInstance().getValue(req, "USERMODEL")).getUserName());
 		updateNew = newSerive.update(updateNew);
 		mapper.writeValue(resp.getOutputStream(), updateNew);
 	}

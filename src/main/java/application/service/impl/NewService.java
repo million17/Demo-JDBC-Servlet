@@ -24,9 +24,6 @@ public class NewService implements INewService {
 	@Override
 	public New save(New news) {
 		news.setCreatedDate(new Timestamp(System.currentTimeMillis()));
-		news.setCreatedBy("");
-		news.setModifiedBy("");
-		news.setModifiedDate(new Timestamp(System.currentTimeMillis()));
 		Long newId = newDAO.save(news);
 
 		return newDAO.findOne(newId);
@@ -38,7 +35,6 @@ public class NewService implements INewService {
 		updateNew.setCreatedDate(oldNew.getCreatedDate());
 		updateNew.setCreatedBy(oldNew.getCreatedBy());
 		updateNew.setModifiedDate(new Timestamp(System.currentTimeMillis()));
-		updateNew.setModifiedBy("");
 		newDAO.update(updateNew);
 		return newDAO.findOne(updateNew.getId());
 	}
