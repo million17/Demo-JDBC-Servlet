@@ -49,37 +49,9 @@
 
 				</tbody>
 			</table>
-			<ul class="pagination d-flex justify-content-center" id="pagination"></ul>
-			<input type="hidden" value="" id="page" name="page"/>
-			<input type="hidden" value="" id="maxPageItem " name="maxPageItem"/>
-			<input type="hidden" value="" id="sortName" name="sortName"/>
-			<input type="hidden" value="" id="sortBy " name="sortBy"/>
+		
 		</div>
 	</form>
-	<script type="text/javascript">
-		
-		var totalPages = ${vm.totalPage};
-		var currentPages = ${vm.page};
-		/*var visiblePage = ${vm.maxPageItem}; */
-		var limit = 2;
-		$(function() {
-			window.pagObj = $('#pagination').twbsPagination({
-				totalPages : (totalPages==0)?1:totalPages,
-				visiblePages :10,
-				startPage : currentPages,
-				onPageClick : function(event, page) {
-					if(currentPage != page){
-						$('#maxPageItem').val(limit);
-						$('#page').val(page);
-						$('#sortName').val('title');
-						$('#sortBy').val('ASC');
-						$('#formSubmit').submit();
-					}
-					
-				}
-			});
-		});
-	</script>
 </body>
 
 </html>
