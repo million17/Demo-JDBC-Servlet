@@ -30,14 +30,28 @@ public class NewController extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		New vm = FormUtil.toModel(New.class, req);
-		Pageble pageble = new PageRequest(vm.getPage(), vm.getMaxPageItem(),
-				new Sorter(vm.getSortName(), vm.getSortBy()));
-		vm.setListResult(newService.findAll(pageble));
-		vm.setTotalItem(newService.getTotalItem());
-		vm.setTotalPage((int) Math.ceil((double) vm.getTotalItem() / vm.getMaxPageItem()));
-		req.setAttribute(SystemConstant.VM, vm);
-		RequestDispatcher rd = req.getRequestDispatcher("/views/admin/news/list.jsp");
-		rd.forward(req, resp);
+		String view = "";
+		if (vm.getType().equals(SystemConstant.LIST)) {
+			Pageble pageble = new PageRequest(vm.getPage(), vm.getMaxPageItem(),
+					new Sorter(vm.getSortName(), vm.getSortBy()));
+			vm.setListResult(newService.findAll(pageble));
+			vm.setTotalItem(newService.getTotalItem());
+			vm.setTotalPage((int) Math.ceil((double) vm.getTotalItem() / vm.getMaxPageItem()));
+			view = "/views/admin/news/list.jsp";
+			RequestDispatcher rd = req.getRequestDispatcher(view);
+			rd.forward(req, resp);
+		} else if (vm.getType().equals(SystemConstant.EDIT)) {
+			if (vm.getId() != null) {
+				vm = newService.findOne(vm.getId());
+				
+			} else {
 
+			}
+			view = "/views/admin/news/edit.jsp";
+
+		}
+		req.setAttribute(SystemConstant.VM, vm);
+		RequestDispatcher rd = req.getRequestDispatcher(view);
+		rd.forward(req, resp);
 	}
 }

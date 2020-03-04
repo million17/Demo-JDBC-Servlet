@@ -11,7 +11,7 @@
 
 <body>
 	<div class="d-flex justify-content-end">
-		<a href="#" class="btn btn-gradient-primary btn-icon-text mr-4">
+		<a href="c:url value='/admin-new?type=edit' /> " class="btn btn-gradient-primary btn-icon-text mr-4">
             <i class="mdi mdi-file-check btn-icon-prepend"></i>
             Add News
         </a>
@@ -39,11 +39,15 @@
 							<td>${ item.title }</td>
 							<td>${ item.thumbnail }</td>
 							<td>${ item.shortDesc }</td>
-							<td>${ item.content }</td>
+							<td>${ item.content }</td> 
 							<td>
-							<button type="button" class="btn btn-gradient-dark btn-icon-text">
+							<c:url var="editURL" value="/admin-new">
+								<c:param name="type" value="edit" />
+								<c:param name="id" value="${ item.id }" />
+							</c:url>
+							<a class="btn btn-gradient-dark btn-icon-text" href="${editURL}">
                          		<i class="mdi mdi-file-check btn-icon-append"></i>                          
-                        	</button></td>
+                        	</a></td>
 						</tr>
 					</c:forEach>
 
@@ -54,6 +58,7 @@
 			<input type="hidden" value="" id="maxPageItem " name="maxPageItem"/>
 			<input type="hidden" value="" id="sortName" name="sortName"/>
 			<input type="hidden" value="" id="sortBy " name="sortBy"/>
+			<input type="hidden" value="" id="type " name="type"/>
 		</div>
 	</form>
 	<script type="text/javascript">
@@ -73,6 +78,7 @@
 						$('#page').val(page);
 						$('#sortName').val('title');
 						$('#sortBy').val('ASC');
+						#('#type').val('list');
 						$('#formSubmit').submit();
 					}
 					

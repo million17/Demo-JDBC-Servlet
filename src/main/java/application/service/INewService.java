@@ -8,6 +8,8 @@ import application.paging.Pageble;
 public interface INewService {
 	List<New> findByCategoryId(Long categoryId);
 
+	New findOne(Long id);
+
 	New save(New news);
 
 	New update(New updateNew);

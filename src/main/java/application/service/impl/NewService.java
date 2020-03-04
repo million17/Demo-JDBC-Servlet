@@ -58,4 +58,10 @@ public class NewService implements INewService {
 		return newDAO.getTotalItem();
 	}
 
+	@Override
+	public New findOne(Long id) {
+		
+		return newDAO.findOne(id);
+	}
+
 }

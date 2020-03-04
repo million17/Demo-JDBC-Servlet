@@ -10,48 +10,53 @@
 </head>
 
 <body>
-	<div class="d-flex justify-content-end">
-		<a href="#" class="btn btn-gradient-primary btn-icon-text mr-4">
-            <i class="mdi mdi-file-check btn-icon-prepend"></i>
-            Add News
-        </a>
-        <button id="btnDelete" type="button" class="btn btn-gradient-dark mr-4">
-            <i class="mdi mdi-file-check btn-icon-prepend"></i>
-            Delete
-         </button>
-    </div>
-	<form action="<c:url value = '/admin-new/' /> " id="formSubmit"
-		method="get">
-		<div class="table-responsive">
-			<table class="table">
-				<thead>
-					<tr>
-						<th>Title</th>
-						<th>Thumbnail</th>
-						<th>Short Description</th>
-						<th>Content</th>
-						<th>Edit</th>
-					</tr>
-				</thead>
-				<tbody>
-					<c:forEach var="item" items="${vm.listResult}">
-						<tr>
-							<td>${ item.title }</td>
-							<td>${ item.thumbnail }</td>
-							<td>${ item.shortDesc }</td>
-							<td>${ item.content }</td>
-							<td>
-							<button type="button" class="btn btn-gradient-dark btn-icon-text">
-                         		<i class="mdi mdi-file-check btn-icon-append"></i>                          
-                        	</button></td>
-						</tr>
-					</c:forEach>
-
-				</tbody>
-			</table>
-		
+	<div class="row">
+		<div class="col-12 grid-margin stretch-card">
+			<div class="card">
+				<div class="card-body">
+					<h4 class="card-title">Edit News</h4>
+					<p class="card-description">Basic form edits</p>
+					<c:if test="${not empty message}">
+						<div class="alert alert-${alert} my-3 mx-3" role="alert">
+							${message}</div>
+					</c:if>
+					<form class="forms-sample">
+						<div class="form-group">
+							<label for="titile">Title</label> 
+							<input type="text"
+								class="form-control" id="titile" name="title" placeholder="title">
+						</div>
+						<div class="form-group">
+							<label for="thumbnail">Thumbnail</label> <input
+								type="text" class="form-control" id="thumbnail"
+								placeholder="thumbnail">
+						</div>
+						<div class="form-group">
+							<label for="shortDesc">Short Description</label> <input
+								type="text" class="form-control" id="shortDesc"
+								placeholder="Password" name="shortDesc">
+						</div>
+						<div class="form-group">
+							<label for="content">Content</label> <input type="text"
+								class="form-control" id="content" name="content"
+								placeholder="content">
+						</div>
+						<div class="form-group">
+							<label for="exampleFormControlSelect1">Category</label>
+							<select class="form-control form-control-lg" id="categoryCode" name="categoryCode">
+							<option value ="1">1</option>
+							<option>2</option>
+							<option>3</option>
+							<option>4</option>
+							<option>5</option>
+							</select>
+						</div>
+						<button type="submit" class="btn btn-gradient-primary mr-2">Submit</button>
+						<button class="btn btn-light">Cancel</button>
+					</form>
+				</div>
+			</div>
 		</div>
-	</form>
+	</div>
 </body>
-
 </html>

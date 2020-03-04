@@ -6,6 +6,7 @@ public class New extends AbstractModel<New> {
 	private String shortDesc;
 	private String content;
 	private Long categoryId;
+	private String categoryCode;
 
 	public String getTitle() {
 		return title;
