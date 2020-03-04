@@ -11,7 +11,7 @@
 
 <body>
 	<div class="d-flex justify-content-end">
-		<a href="c:url value='/admin-new?type=edit' /> " class="btn btn-gradient-primary btn-icon-text mr-4">
+		<a href="<c:url value = "/admin-new?type=edit "/>" class="btn btn-gradient-primary btn-icon-text mr-4">
             <i class="mdi mdi-file-check btn-icon-prepend"></i>
             Add News
         </a>
@@ -69,7 +69,7 @@
 		var limit = 2;
 		$(function() {
 			window.pagObj = $('#pagination').twbsPagination({
-				totalPages : (totalPages==0)?1:totalPages,
+				totalPages : (totalPages==0) ? 1 : totalPages,
 				visiblePages :10,
 				startPage : currentPages,
 				onPageClick : function(event, page) {
@@ -78,7 +78,7 @@
 						$('#page').val(page);
 						$('#sortName').val('title');
 						$('#sortBy').val('ASC');
-						#('#type').val('list');
+						$('#type').val('list');
 						$('#formSubmit').submit();
 					}
 					

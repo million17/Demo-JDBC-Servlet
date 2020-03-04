@@ -6,6 +6,7 @@ import java.util.List;
 import javax.inject.Inject;
 
 import application.dao.ICategoryDAO;
+import application.dao.impl.NewDAO;
 import application.model.Category;
 import application.service.ICategoryService;
 
@@ -39,6 +40,12 @@ public class CategoryService implements ICategoryService {
 		categorys.setModifiedBy("");
 		categorys.setCreatedBy("");
 		Long categoryId = categoryDao.save(categorys);
+		return categoryDao.findOne(categoryId);
+	}
+
+	@Override
+	public Category findOne(Long categoryId) {
+
 		return categoryDao.findOne(categoryId);
 	}
 

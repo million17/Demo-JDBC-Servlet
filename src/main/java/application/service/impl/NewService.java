@@ -5,7 +5,9 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import application.dao.ICategoryDAO;
 import application.dao.INewDAO;
+import application.model.Category;
 import application.model.New;
 import application.paging.Pageble;
 import application.service.INewService;
@@ -14,6 +16,9 @@ public class NewService implements INewService {
 
 	@Inject
 	private INewDAO newDAO;
+
+	@Inject
+	private ICategoryDAO categoryDAO;
 
 	@Override
 	public List<New> findByCategoryId(Long categoryId) {
@@ -60,8 +65,10 @@ public class NewService implements INewService {
 
 	@Override
 	public New findOne(Long id) {
-		
-		return newDAO.findOne(id);
+		New news= newDAO.findOne(id);
+		Category category = categoryDAO.findOne(news.getCategoryId());
+		news.setCategoryCode(category.getCode());
+		return news;
 	}
 
 }

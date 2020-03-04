@@ -24,31 +24,43 @@
 						<div class="form-group">
 							<label for="titile">Title</label> 
 							<input type="text"
-								class="form-control" id="titile" name="title" placeholder="title">
+								class="form-control" id="titile" name="title" placeholder="title" value="${vm.title}">
 						</div>
 						<div class="form-group">
 							<label for="thumbnail">Thumbnail</label> <input
 								type="text" class="form-control" id="thumbnail"
-								placeholder="thumbnail">
+								placeholder="thumbnail" value="${vm.thumbnail}">
 						</div>
 						<div class="form-group">
 							<label for="shortDesc">Short Description</label> <input
 								type="text" class="form-control" id="shortDesc"
-								placeholder="Password" name="shortDesc">
+								placeholder="Password" name="shortDesc" value="${vm.shortDesc}">
 						</div>
 						<div class="form-group">
 							<label for="content">Content</label> <input type="text"
 								class="form-control" id="content" name="content"
-								placeholder="content">
+								placeholder="content" value="${vm.content}">
 						</div>
 						<div class="form-group">
 							<label for="exampleFormControlSelect1">Category</label>
 							<select class="form-control form-control-lg" id="categoryCode" name="categoryCode">
-							<option value ="1">1</option>
-							<option>2</option>
-							<option>3</option>
-							<option>4</option>
-							<option>5</option>
+							<c:if test=" ${ empty vm.categoryCode } ">
+								<option value ="">Select Category</option>
+								<c:forEach var="items" items="${categories}">
+									<option value="${items.code}">${items.name}</option>
+								</c:forEach>
+							</c:if>
+							<c:if test=" ${not empty vm.categoryCode}">
+								<c:forEach var="items" items="${categories}">
+									<c:if test = "${item.code == 'the-thao'}">
+										<option value="${items.code}" selected="selected">${items.name}</option>
+									</c:if>
+									<c:if test = "${item.code != 'the-thao'}">
+										<option value="${items.code}">${items.name}</option>
+									</c:if>
+								</c:forEach>
+								<option value ="">Select Category</option>
+							</c:if>
 							</select>
 						</div>
 						<button type="submit" class="btn btn-gradient-primary mr-2">Submit</button>
