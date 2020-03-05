@@ -18,9 +18,7 @@ public class NewMapper implements RowMapper<New> {
 			news.setCategoryId(resultSet.getLong("categoryid"));
 			news.setShortDesc(resultSet.getString("short_desc"));
 			news.setCreatedDate(resultSet.getTimestamp("created_date"));
-			news.setModifiedDate(resultSet.getTimestamp("modified_date"));
 			news.setCreatedBy(resultSet.getString("created_by"));
-			news.setModifiedBy(resultSet.getString("modified_by"));
 			if (resultSet.getTimestamp("modified_date") != null) {
 				news.setCreatedDate(resultSet.getTimestamp("modified_date"));
 			}
