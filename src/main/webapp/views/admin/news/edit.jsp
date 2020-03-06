@@ -28,6 +28,11 @@
 								value="${vm.title}">
 						</div>
 						<div class="form-group">
+							<label for="thumbnail">Thumbnail</label> <input type="text"
+								class="form-control" id="thumbnail" name="thumbnail" placeholder="thumbnail"
+								value="${vm.thumbnail}">
+						</div>
+						<div class="form-group">
 							<label for="exampleFormControlSelect1">Category</label> <select
 								class="form-control" id="categoryCode" name="categoryCode">
 								<c:if test="${empty vm.categoryCode }">
@@ -45,11 +50,6 @@
 									</c:forEach>
 								</c:if>
 							</select>
-						</div>
-						<div class="form-group">
-							<label for="thumbnail">Thumbnail</label> <input type="text"
-								class="form-control" id="thumbnail" placeholder="thumbnail"
-								value="${vm.thumbnail}">
 						</div>
 						<div class="form-group">
 							<label for="shortDesc">Short Description</label> <input
@@ -77,12 +77,6 @@
 	<script>
 		$("#btnAddOrEdit").click(function(e) {
 			e.preventDefault();
-			//get Dulieu tu client dai nen dung form data
-			// var title = $('#title').val();
-			// var categoryCode = $('#categoryCode').val();
-			// var thumbnail = $('#thumbnail').val();
-			// var shortDesc = $('#shortDesc').val();
-			// var content = $('#content').val();
 			var data = {};
 			var formData = $('#formSubmit').serializeArray();
 			$.each(formData, function (i, v) { 

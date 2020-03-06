@@ -19,7 +19,7 @@ public class NewDAO extends AbstractDAO<New> implements INewDAO {
 	public Long save(New news) {
 		String sql = "insert into news " + "(title , thumbnail , categoryid , "
 				+ "short_desc , content , created_date , " + "modified_date , created_by , modified_by)"
-				+ " values (? , ?, ? ,? , ? , ? , ? , ? , ?)";
+				+ " values ( ? , ? , ? , ? , ? , ? , ? , ? , ?)";
 
 		return insert(sql, news.getTitle(), news.getThumbnail(), news.getCategoryId(), news.getShortDesc(),
 				news.getContent(), news.getCreatedDate(), news.getModifiedDate(), news.getCreatedBy(),
