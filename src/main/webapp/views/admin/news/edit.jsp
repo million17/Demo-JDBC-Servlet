@@ -57,9 +57,8 @@
 								placeholder="Password" name="shortDesc" value="${vm.shortDesc}">
 						</div>
 						<div class="form-group">
-							<label for="content">Content</label> <input type="text"
-								class="form-control" id="content" name="content"
-								placeholder="content" value="${vm.content}">
+							<label for="content">Content</label>
+							<textarea name="content" id="content" cols="30" rows="10" value="${vm.content}"></textarea>
 						</div>
 						<c:if test="${empty vm.id}">
 							<input type="button" class="btn btn-success" value="Add" id="btnAddOrEdit" />
@@ -75,6 +74,10 @@
 		</div>
 	</div>
 	<script>
+		var editor = '';
+		$( document ).ready(function() {
+		    editor = CKEDITOR.replace('content');
+		});
 		$("#btnAddOrEdit").click(function(e) {
 			e.preventDefault();
 			var data = {};

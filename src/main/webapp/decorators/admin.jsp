@@ -23,6 +23,7 @@
 <!-- endinject -->
 <link rel="shortcut icon"
 	href="<c:url value= '/template/admin/images/favicon.png' /> " />
+	
 </head>
 <body>
 	<div class="container-scroller">
@@ -47,7 +48,7 @@
 		<%@ include file="/common/admin/footer.jsp"%>
 		<!-- end footer -->
 	</div>
-
+	<script src="<c:url value= '/ckeditor/ckeditor.js' /> "></script>
 	<!-- plugins:js -->
 	<script
 		src="<c:url value='/template/admin/vendors/js/vendor.bundle.base.js'/>"></script>
