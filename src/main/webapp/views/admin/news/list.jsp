@@ -12,6 +12,10 @@
 </head>
 
 <body>
+	<c:if test="${not empty messageResponse}">
+		<div class="alert alert-${alert} my-3 mx-3" role="alert">
+			${messageResponse}</div>
+	</c:if>
 	<div class="d-flex justify-content-end">
 		<a href="<c:url value = "/admin-new?type=edit "/>" class="btn btn-gradient-primary btn-icon-text mr-4">
             <i class="mdi mdi-file-check btn-icon-prepend"></i>
@@ -105,10 +109,10 @@
 				contentType : 'application/json',
 				data : JSON.stringify(data),
 				success : function(result) {
-					window.location.href = "${NEWurl}?type=list&page=1&maxPageItem=3&sortName=title&sortBy=desc";
+					window.location.href = "${NEWurl}?type=list&page=1&maxPageItem=3&message=delete_success";
 				},
 				error :function(error) {
-					console.log(error);
+					window.location.href = "${NEWurl}?type=list&page=1&maxPageItem=3&message=error_system";
 				}
 			});
 		}

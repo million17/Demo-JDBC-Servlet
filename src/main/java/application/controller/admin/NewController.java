@@ -17,6 +17,7 @@ import application.service.ICategoryService;
 import application.service.INewService;
 import application.sort.Sorter;
 import application.utils.FormUtil;
+import application.utils.MessageUtil;
 
 @WebServlet(urlPatterns = { "/admin-new" })
 public class NewController extends HttpServlet {
@@ -42,6 +43,7 @@ public class NewController extends HttpServlet {
 			vm.setTotalItem(newService.getTotalItem());
 			vm.setTotalPage((int) Math.ceil((double) vm.getTotalItem() / vm.getMaxPageItem()));
 			view = "/views/admin/news/list.jsp";
+
 		} else if (vm.getType().equals(SystemConstant.EDIT)) {
 			if (vm.getId() != null) {
 				vm = newService.findOne(vm.getId());
@@ -50,6 +52,7 @@ public class NewController extends HttpServlet {
 			view = "/views/admin/news/edit.jsp";
 
 		}
+		MessageUtil.showMessage(req);
 		req.setAttribute(SystemConstant.VM, vm);
 		RequestDispatcher rd = req.getRequestDispatcher(view);
 		rd.forward(req, resp);

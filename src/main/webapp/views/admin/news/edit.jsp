@@ -17,9 +17,9 @@
 				<div class="card-body">
 					<h4 class="card-title">Edit News</h4>
 					<p class="card-description">Basic form edits</p>
-					<c:if test="${not empty message}">
+					<c:if test="${not empty messageResponse}">
 						<div class="alert alert-${alert} my-3 mx-3" role="alert">
-							${message}</div>
+							${messageResponse}</div>
 					</c:if>
 					<form id="formSubmit">
 						<div class="form-group">
@@ -100,11 +100,11 @@
 				data : JSON.stringify(data),
 				dataType : 'json',
 				success : function(result){
-					console.log(result);
+					window.location.href = "${NEWurl}?type=edit&id="+result.id+"&message=insert_success";
 					
 				},
 				error : function(error) {
-					console.log(error);
+					window.location.href = "${NEWurl}?type=list&page=1&maxPageItem=3&message=error_system";
 				}
 
 			});
@@ -117,10 +117,10 @@
 				data : JSON.stringify(data),
 				dataType : 'json',
 				success : function (result) {
-					console.log(result);
+					window.location.href = "${NEWurl}?type=edit&id="+result.id+"&message=update_success";
 				},
 				error : function (error) { 
-					console.log(error);
+					window.location.href = "${NEWurl}?type=list&page=1&maxPageItem=3&message=error_system";
 				}
 			});
 		}

@@ -2,6 +2,8 @@ package application.dao.impl;
 
 import java.util.List;
 
+import org.apache.commons.lang.StringUtils;
+
 import application.dao.INewDAO;
 import application.mapper.NewMapper;
 import application.model.New;
@@ -56,7 +58,7 @@ public class NewDAO extends AbstractDAO<New> implements INewDAO {
 	public List<New> findAll(Pageble pageble) {
 //		String sql = "SELECT * FROM news";
 		StringBuilder sql = new StringBuilder("SELECT * FROM news ");
-		if (pageble.getSorter() != null) {
+		if (pageble.getSorter() != null && StringUtils.isNotBlank(pageble.getSorter().getSortName()) && StringUtils.isNotBlank(pageble.getSorter().getSortBy())) {
 			sql.append(" ORDER BY " + pageble.getSorter().getSortName() + " " + pageble.getSorter().getSortBy());
 		}
 		if (pageble.getOffset() != null && pageble.getLimit() != null) {
